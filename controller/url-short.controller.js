@@ -31,7 +31,7 @@ const checkUrlIntoMongo = async (req, res, next) => {
         } else {
             console.log('lam j co url')
             res.status(404).render('home', {
-                non_short_url: `Hãy nhập url nào rồi short`,
+                non_short_url: `Vui lòng nhập url cần rút ngắn !!!`,
             })
         }
     } catch (e) {

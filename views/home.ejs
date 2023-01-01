@@ -114,11 +114,11 @@
 <body class="chayso__samar font_web">
 <div class="container text-center center ">
     <div class="row text-center">
-        <div class="col-md-12 text-white">
+        <div class="col-md-12 text-white pt-5">
             <div class="text-center m-b30 logo">
                 <!--                <img src="welcome/images/logo-white.png" alt="">-->
             </div>
-            <!--            <span>Introducing DexignZone</span>-->
+<!--                        <span>Introducing DexignZone</span>-->
             <h1>Shorten Link URL - Website</h1>
         </div>
     </div>
@@ -142,13 +142,20 @@
 
     <% } %>
     <% if (locals.non_short_url) { %>
-
-
-
-        <p><%= non_short_url %> </p>
+        <h5 class="text-white pt-2"><%= non_short_url %> </h5>
     <% } %>
     <div id="snackbar">Copy thành công..</div>
 </div>
+<span class="text-white position-absolute " style="
+font-size: 10px;
+position: absolute;
+margin-left: auto;
+margin-right: auto;
+left: 0;
+bottom: 0;
+right: 0;
+text-align: center;
+">  ❤️ DΛn9Tuaz ❤️ </span>
 
 <script>
     function myFunction() {
