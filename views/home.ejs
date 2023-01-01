@@ -160,16 +160,16 @@ text-align: center;
 <script>
     function myFunction() {
         // Get the text field
-        var copyText = document.getElementById("clipboard");
-
+        const copyText =  document.getElementById("clipboard");
+        console.log('copyText',copyText.value)
         // Select the text field
         copyText.select();
         copyText.setSelectionRange(0, 99999); // For mobile devices
-
+        const convertUrl = `https://${copyText.value}`
         // Copy the text inside the text field
-        navigator.clipboard.writeText(copyText.value);
+        navigator.clipboard.writeText(convertUrl);
 
-        var x = document.getElementById("snackbar");
+        const x = document.getElementById("snackbar");
         x.className = "show";
         setTimeout(function () {
             x.className = x.className.replace("show", "");
