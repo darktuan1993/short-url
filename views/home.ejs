@@ -3,33 +3,176 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="./public/style.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Short URL</title>
-</head>
-<body>
-<div class="container text-center">
-    <h1 style="color: red">Làm ngắn URL</h1>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <style type="text/css">
+        .chayso__samar {
+            background: url(https://samar.wprdx.com/welcome/images/bg1.jpg) no-repeat center;
+            background-size: cover;
+            height: 100vh;
+            padding: 0;
+            display: flex;
+        }
 
-    <form action="/" method="post">
-        <input type="url" name="url" id="url" placeholder="url here..." />
-        <input type="submit" value="create url" />
+        .font_web {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .center {
+            width: 50%;
+            height: 50%;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px
+        }
+
+        .btn__samar {
+            background: linear-gradient(to right, #f55f8d 0%, #f8ae56 51%, #f55f8d 100%);
+        }
+
+        .btn-grad {
+            background-image: linear-gradient(to right, #FF512F 0%, #F09819 51%, #FF512F 100%);
+            margin: 10px;
+            padding: 15px 45px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;
+            box-shadow: 0 0 5px #eee;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .btn-grad:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .form-control {
+            height: calc(2.5em + .75rem + 2px);
+            box-shadow: 0 0 5px #eee;
+        }
+
+        .input-group-addon button {
+            border-radius: 0 0.5rem 0.5rem 0;
+            height: 100%;
+            width: 100%;
+            border-color: transparent;
+            margin: 0;
+            padding: 0 0;
+        }
+
+        /*.form-control:hover, .form-control:focus {*/
+        /*    border: 2px solid rgba(232, 62, 140,.4);*/
+        /*    box-shadow: none;*/
+        /*}*/
+
+        #snackbar {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #46af46;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            top: 64%;
+            font-size: 17px;
+        }
+
+        #snackbar.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s;
+            animation: fadein 0.5s;
+        }
+
+        @-webkit-keyframes fadein {
+            from {
+                top: 80%;
+                opacity: 0;
+            }
+            to {
+                top: 64%;
+                opacity: 1;
+            }
+        }
+
+    </style>
+
+</head>
+<body class="chayso__samar font_web">
+<div class="container text-center center ">
+    <div class="row text-center">
+        <div class="col-md-12 text-white">
+            <div class="text-center m-b30 logo">
+                <!--                <img src="welcome/images/logo-white.png" alt="">-->
+            </div>
+            <!--            <span>Introducing DexignZone</span>-->
+            <h1>Shorten Link URL - Website</h1>
+        </div>
+    </div>
+
+    <form class="d-flex" action="/" method="post">
+        <div class="form-group w-100 m-auto shadow">
+            <input type="url" class="form-control" name="url" id="url" placeholder="Please input Url here..."/>
+        </div>
+        <div class="input-group-addon w-25">
+            <button class="btn btn-grad" type="submit" value="Short Url">
+                Short Url
+            </button>
+        </div>
     </form>
 
+    <% if (locals.short_url) { %>
+        <div class="short-url bg-dark p-5 d-flex" style="font-size: 25px;justify-content: center;">
+            <input class="text-dark form-control" style="width: 60%;" id="clipboard" value="<%= short_url %>">
+            <button class="btn btn-primary" style=" box-shadow: 0 0 5px #eee;" onclick="myFunction()">Copy text</button>
+        </div>
 
-    <div class="short-url">
-        <% if (locals.short_url) { %>
-            <a href="<%= short_url %>"><%= short_url %> </a>
-        <% } %>
-            <% if (locals.non_short_url) { %>
-                <p><%= non_short_url %> </p>
-            <% } %>
+    <% } %>
+    <% if (locals.non_short_url) { %>
 
 
-    </div>
+
+        <p><%= non_short_url %> </p>
+    <% } %>
+    <div id="snackbar">Copy thành công..</div>
 </div>
 
+<script>
+    function myFunction() {
+        // Get the text field
+        var copyText = document.getElementById("clipboard");
+
+        // Select the text field
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // For mobile devices
+
+        // Copy the text inside the text field
+        navigator.clipboard.writeText(copyText.value);
+
+        var x = document.getElementById("snackbar");
+        x.className = "show";
+        setTimeout(function () {
+            x.className = x.className.replace("show", "");
+        }, 700);
+    }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
