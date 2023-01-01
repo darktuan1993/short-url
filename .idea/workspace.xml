@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f41f16a7-2729-4fa4-af24-3e552788fcc6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vercel.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +58,7 @@
       <updated>1672554493000</updated>
       <workItem from="1672554494306" duration="1334000" />
       <workItem from="1672556061702" duration="12977000" />
-      <workItem from="1672573296949" duration="370000" />
+      <workItem from="1672573296949" duration="1346000" />
     </task>
     <servers />
   </component>
