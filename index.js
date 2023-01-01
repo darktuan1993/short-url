@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path')
-const port = 5000;
+const port = 3000;
 const mongoURI = 'mongodb+srv://dangtuan:0934010704@url-short.nd90j5s.mongodb.net/?retryWrites=true&w=majority'
 const app = express()
 const mongoose = require('mongoose')
