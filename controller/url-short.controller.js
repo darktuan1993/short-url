@@ -47,7 +47,7 @@ const forwardUrlToDirect = async (req, res) => {
     // check có trong db hay không
     try {
         const {shortId} = req.params
-        console.log('shortId', shortId)
+        // console.log('shortId', shortId)
         const redirectURL = await ShortUrl.findOne({shortId})
         if (shortId) {
             res.redirect(redirectURL?.url)

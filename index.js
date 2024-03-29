@@ -4,7 +4,7 @@ const port = 3000;
 const mongoURI = 'mongodb+srv://dangtuan:0934010704@url-short.nd90j5s.mongodb.net/?retryWrites=true&w=majority'
 const app = express()
 const mongoose = require('mongoose')
-const {rootRouter} = require("./routes/routers");
+const { rootRouter } = require("./routes/routers");
 
 app.use(express.urlencoded({ extended: false }))
 
@@ -14,12 +14,13 @@ app.use(express.json())
 
 // KẾT NỐI DATABASE MONGO
 // connect DB
+mongoose.set('strictQuery', true);
 mongoose.connect(mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
     .then(() => {
-        console.log(`connected to ${mongoURI} `)
+        console.log(`connected to ${mongoURI} `);
     })
     .catch(err => {
         console.log(err)

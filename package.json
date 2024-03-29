@@ -1,10 +1,11 @@
 {
   "name": "short-url",
   "version": "1.1.1",
-  "description": "Short-URL-HoaLand",
+  "description": "Short-URL",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "author": "bach-dang-tuan",
   "license": "ISC",
@@ -12,6 +13,7 @@
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "mongoose": "^6.8.2",
-    "shortid": "^2.2.16"
+    "shortid": "^2.2.16",
+    "nodemon": "^2.0.20"
   }
 }

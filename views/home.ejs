@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Short URL</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +16,6 @@
             background-size: cover;
             height: 100vh;
             padding: 0;
-            display: flex;
         }
 
         .font_web {
@@ -29,7 +29,11 @@
             background-color: rgba(255, 255, 255, 0.05);
             padding: 15px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px
+            border-radius: 12px;
+            left: 25%;
+            top: 25%;
+            position: absolute;
+
         }
 
         .btn__samar {
@@ -51,7 +55,8 @@
         }
 
         .btn-grad:hover {
-            background-position: right center; /* change the direction of the change here */
+            background-position: right center;
+            /* change the direction of the change here */
             color: #fff;
             text-decoration: none;
         }
@@ -102,51 +107,55 @@
                 top: 80%;
                 opacity: 0;
             }
+
             to {
                 top: 64%;
                 opacity: 1;
             }
         }
-
     </style>
 
 </head>
+
 <body class="chayso__samar font_web">
-<div class="container text-center center ">
-    <div class="row text-center">
-        <div class="col-md-12 text-white py-3">
-            <div class="text-center m-b30 logo">
-                <!--                <img src="welcome/images/logo-white.png" alt="">-->
+    <div class="container text-center center ">
+        <div class="row text-center">
+            <div class="col-md-12 text-white py-3">
+                <div class="text-center m-b30 logo">
+                    <!--                <img src="welcome/images/logo-white.png" alt="">-->
+                </div>
+                <!--                        <span>Introducing DexignZone</span>-->
+                <h1>Tạo shorten URL - PRODUCTION</h1>
             </div>
-<!--                        <span>Introducing DexignZone</span>-->
-            <h1>Shorten Link URL - Website</h1>
         </div>
+
+        <form class="d-flex" action="/" method="post">
+            <div class="form-group w-100 m-auto shadow">
+                <input type="url" class="form-control" name="url" id="url" placeholder="Nhập Url vào đây....." />
+            </div>
+            <div class="input-group-addon w-25">
+                <button class="btn btn-grad" type="submit" value="Short Url">
+                    Short Url
+                </button>
+            </div>
+        </form>
+
+        <% if (locals.short_url) { %>
+            <div class="short-url bg-dark p-5 d-flex" style="font-size: 25px;justify-content: center;">
+                <input class="text-dark form-control" style="width: 60%;" id="clipboard" value="<%= short_url %>">
+                <button class="btn btn-primary" style=" box-shadow: 0 0 5px #eee;" onclick="myFunction()">Copy
+                    text</button>
+            </div>
+
+            <% } %>
+                <% if (locals.non_short_url) { %>
+                    <h5 class="text-white py-5">
+                        <%= non_short_url %>
+                    </h5>
+                    <% } %>
+                        <div id="snackbar">Copy thành công..</div>
     </div>
-
-    <form class="d-flex" action="/" method="post">
-        <div class="form-group w-100 m-auto shadow">
-            <input type="url" class="form-control" name="url" id="url" placeholder="Please input Url here..."/>
-        </div>
-        <div class="input-group-addon w-25">
-            <button class="btn btn-grad" type="submit" value="Short Url">
-                Short Url
-            </button>
-        </div>
-    </form>
-
-    <% if (locals.short_url) { %>
-        <div class="short-url bg-dark p-5 d-flex" style="font-size: 25px;justify-content: center;">
-            <input class="text-dark form-control" style="width: 60%;" id="clipboard" value="<%= short_url %>">
-            <button class="btn btn-primary" style=" box-shadow: 0 0 5px #eee;" onclick="myFunction()">Copy text</button>
-        </div>
-
-    <% } %>
-    <% if (locals.non_short_url) { %>
-        <h5 class="text-white py-5"><%= non_short_url %> </h5>
-    <% } %>
-    <div id="snackbar">Copy thành công..</div>
-</div>
-<span class="text-white position-absolute " style="
+    <span class="text-white position-absolute " style="
 font-size: 10px;
 position: absolute;
 margin-left: auto;
@@ -155,40 +164,41 @@ left: 0;
 bottom: 0;
 right: 0;
 text-align: center;
-">  ❤️ DΛn9Tuaz ❤️ </span>
+"> ❤️ D4rkTuaz ❤️ </span>
 
-<script>
-    function myFunction() {
-        // Get the text field
-        const copyText =  document.getElementById("clipboard");
-        console.log('copyText',copyText.value)
-        // Select the text field
-        copyText.select();
-        copyText.setSelectionRange(0, 99999); // For mobile devices
-        const convertUrl = `https://${copyText.value}`
-        // Copy the text inside the text field
-        navigator.clipboard.writeText(convertUrl);
+    <script>
+        function myFunction() {
+            // Get the text field
+            const copyText = document.getElementById("clipboard");
+            console.log('copyText', copyText.value)
+            // Select the text field
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // For mobile devices
+            const convertUrl = `https://${copyText.value}`
+            // Copy the text inside the text field
+            navigator.clipboard.writeText(convertUrl);
 
-        const x = document.getElementById("snackbar");
-        x.className = "show";
-        setTimeout(function () {
-            x.className = x.className.replace("show", "");
-        }, 700);
-    }
-</script>
+            const x = document.getElementById("snackbar");
+            x.className = "show";
+            setTimeout(function () {
+                x.className = x.className.replace("show", "");
+            }, 700);
+        }
+    </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 </body>
+
 </html>
