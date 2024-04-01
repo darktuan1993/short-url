@@ -1,5 +1,5 @@
 const express = require('express')
-const {urlRouter} = require("./url-short.router");
+const { urlRouter } = require("./url-short.router");
 
 
 const rootRouter = express.Router();
@@ -8,4 +8,4 @@ const rootRouter = express.Router();
 rootRouter.use('/', urlRouter)
 
 
-module.exports = {rootRouter}
+module.exports = { rootRouter }

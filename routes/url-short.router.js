@@ -3,8 +3,8 @@ const {getHtmlFormInput, forwardUrlToDirect, checkUrlIntoMongo} = require("../co
 
 const urlRouter = express.Router();
 
-urlRouter.get('/', getHtmlFormInput)
-urlRouter.post('/', checkUrlIntoMongo)
+urlRouter.get('/dev', getHtmlFormInput)
+urlRouter.post('/dev', checkUrlIntoMongo)
 urlRouter.get('/:shortId', forwardUrlToDirect)
 
 module.exports = {
