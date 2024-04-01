@@ -6,8 +6,8 @@ const port = 3000;
 
 // MONGO INFOR CONNECT LOCAL
 
-const dbName = 'admin';
-const username = 'root';
+const dbName = 'short-url';
+const username = 'darktuan';
 const password = 'dangtuan12';
 const ip = '10.0.0.210';
 const portMongo = '30767';
@@ -47,3 +47,4 @@ app.listen(port, () => {
 
 })
 
+// db.createUser({ user: "darktuan", pwd: "dangtuan12", roles: ["readWrite"]})
