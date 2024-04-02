@@ -9,8 +9,8 @@ const port = 3000;
 const dbName = 'short-url';
 const username = 'darktuan';
 const password = 'dangtuan12';
-const ip = '10.0.0.210';
-const portMongo = '30767';
+const ip = '10.0.0.223';
+const portMongo = '32680';
 const connectionString = `mongodb://${username}:${password}@${ip}:${portMongo}/${dbName}`;
 
 
